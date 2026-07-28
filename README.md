@@ -1,21 +1,18 @@
 # Threads Posts Repo
 
-This repo holds ONLY the daily Threads post content for @ixnozi's Soft But Grounded automation. It's read by a scheduled cloud agent that posts a daily approval message to Slack, and (on your ✅ reaction) schedules the 5 posts to Buffer.
+This repo holds ONLY the daily Threads post content for @ixnozi's Soft But Grounded automation. It's read by a Make.com scenario that posts a daily approval message to Slack, and (on your ✅ reaction) schedules the 5 posts to Buffer.
 
 ## Structure
 
 ```
-Week of [Month Day, Year]/
-  Monday.txt
-  Tuesday.txt
-  Wednesday.txt
-  Thursday.txt
-  Friday.txt
-  Saturday.txt
-  Sunday.txt
+days/
+  2026-07-27.txt
+  2026-07-28.txt
+  2026-07-29.txt
+  ...
 ```
 
-The week folder name must match the Monday of that week, in the format `Week of July 27, 2026` (same convention as the main "Soft But Grounded — Week of [Date]" folder on your Desktop, minus the "Soft But Grounded — " prefix).
+One file per calendar day, named `YYYY-MM-DD.txt` (Africa/Johannesburg date), inside the `days/` folder. Flat and date-based — no weekly subfolders — so Make.com's date formulas can build the filename directly with no lookup logic.
 
 ## Daily file format
 
@@ -35,7 +32,7 @@ Each day file contains exactly 5 posts, in order (mapped to fixed posting times:
 
 ## IMPORTANT — you must push after every edit
 
-The cloud agent only ever sees what's on GitHub. Whenever you create or edit a day's file (including after reacting ✏️ in Slack to request an edit), you must run:
+The Make.com scenario only ever sees what's on GitHub. Whenever you create or edit a day's file (including after reacting ✏️ in Slack to request an edit), you must run:
 
 ```
 git add -A && git commit -m "update posts" && git push
